@@ -1,10 +1,7 @@
 ﻿<Window x:Class="_3DWpfCubeRotation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local = "clr-namespace:_3DWpfCubeRotation" 
-        Title="3D WPF Cube Rotation" Height="350" Width="525">
+        Title="Cube Rotation - WPF 3D" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -68,9 +65,16 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <GroupBox Grid.Row="1" Header="Rotation Slider">
+        <GroupBox Grid.Row="1" Header="Cube Rotation value" Margin="5">
             <Grid>
-                <Slider x:Name="sRotationCube" Value="{Binding ElementName=rotCube123,Path=Angle}" Margin="5,5,5,5" Maximum="360"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>                
+                <Slider x:Name="sRotationCube" Value="{Binding ElementName=rotCube123,Path=Angle}" Margin="5" Maximum="360" VerticalAlignment="Center"/>
+                <TextBlock Text="Angle:" Margin="5,5,0,5" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding ElementName=sRotationCube, Path=Value, StringFormat='\{0:F2}°'}" IsReadOnly="True" Margin="5" Grid.Column="2" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
     </Grid>
